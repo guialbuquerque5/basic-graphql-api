@@ -3,10 +3,12 @@ import { ApolloServer } from 'apollo-server-express';
 import { createConnection } from 'typeorm';
 import * as session from 'express-session';
 
-import { User } from './entity/User';
+//import schema from './schema'
+import {genSchema} from './utils/typeDefs'
+//import schema from './schema'
 
+const schema = genSchema();
 
-import schema from './schema'
 
 const startServer = async () => {
 
@@ -28,7 +30,17 @@ const startServer = async () => {
     })
   );
 
-  server.applyMiddleware({ app, path: '/graphql' });
+  server.applyMiddleware({
+    app, 
+    path: '/graphql',
+    cors: {
+      credentials: true,
+      origin: "http://localhost:5000"
+    }
+  
+  });
+
+
 
   app.listen({ port: 3000 }, (): void => 
     console.log(`\n🚀   GraphQL is now running on http://localhost:3000/graphql`)

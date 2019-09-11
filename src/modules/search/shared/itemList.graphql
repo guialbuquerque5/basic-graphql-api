@@ -1,0 +1,14 @@
+
+type Item {
+  id: ID!,
+  idCategory: number!
+  name: number!
+}
+type ItemList{
+  list: [Item!]
+}
+
+
+type Query {
+  dummy: String
+}

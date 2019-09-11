@@ -1,17 +1,6 @@
 import { gql } from 'apollo-server-express';
 
-/*
-type FilterOption{
-  id: ID!,
-  name: String!
-}
 
-type FilterContainer{
-  id: ID!,
-  name: String!,
-  options: [FilterOption!]!
-}
-*/
 export const typeDefs = gql `
   type User {
     id: ID!
@@ -20,7 +9,6 @@ export const typeDefs = gql `
   }
 
   type Query {
-    #filterContainers: [FilterContainer!]!,
     me: User
   },
   type Mutation{

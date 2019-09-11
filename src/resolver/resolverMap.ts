@@ -7,6 +7,7 @@ const resolvers: IResolvers = {
   Query: {
     me: (_, __, {req}) => {
       const id = req.session.userId
+      console.log(id)
       if(id != null){
         return User.findOne(id)
       } else {
